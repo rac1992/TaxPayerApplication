@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('app', []);
+	var app = angular.module('app', ['ngMessages']);
 
 	app.controller('FormController',['$scope','$http',function($scope,$http){
 		
