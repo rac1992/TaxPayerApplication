@@ -1,0 +1,11 @@
+@CHARSET "ISO-8859-1";
+.form-horizontal .control-label{
+/* text-align:right; */
+text-align:left;
+}
+h2 {
+	text-align: center;
+}
+.control-label{
+	text-align: left;
+}

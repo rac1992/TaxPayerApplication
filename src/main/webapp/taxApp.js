@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('app', ['ngMessages']);
+	var app = angular.module('app', []);
 
 	app.controller('FormController',['$scope','$http',function($scope,$http){
 		
@@ -15,11 +15,7 @@
 			    	$scope.status=data;
 			    	alert($scope.status);
 			    	$scope.data=null;
-			    	
 			      });
-			
 		}
-		
 	}]);
-	
 })();
