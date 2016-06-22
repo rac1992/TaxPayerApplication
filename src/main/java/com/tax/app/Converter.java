@@ -56,7 +56,7 @@ public class Converter {
 		}
 	}
 
-	public Object jsonToClass(JSONObject jsonObj) {
+	public Object jsonToClass(JSONObject jsonObj,int id) {
 		String name = (String) jsonObj.get("name");
 		String address = (String) jsonObj.get("address");
 		String pan = (String) jsonObj.get("pan");
@@ -65,7 +65,7 @@ public class Converter {
 		String income = (String) jsonObj.get("income");
 		String tds = (String) jsonObj.get("tds");
 		String taxdeducted = (String) jsonObj.get("taxdeducted");
-		TaxPayers TaxPayersObj = new TaxPayers(name, address, pan, dob, assessmentYear, income, tds, taxdeducted);
+		TaxPayer TaxPayersObj = new TaxPayer(id,name, address, pan, dob, assessmentYear, income, tds, taxdeducted);
 		return TaxPayersObj;
 	}
 

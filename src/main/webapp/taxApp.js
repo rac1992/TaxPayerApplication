@@ -1,7 +1,7 @@
 (function(){
-	var app = angular.module('app', ['ngMessages']);
+	var app = angular.module('app', []);
 
-	app.controller('FormController',['$scope','$http','$error',function($scope,$http){
+	app.controller('FormController',['$scope','$http',function($scope,$http){
 		
 		$scope.saveData=function(){
 			
@@ -15,11 +15,7 @@
 			    	$scope.status=data;
 			    	alert($scope.status);
 			    	$scope.data=null;
-			    	
 			      });
-			
 		}
-		
 	}]);
-	
 })();

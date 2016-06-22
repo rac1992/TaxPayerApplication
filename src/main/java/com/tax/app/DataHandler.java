@@ -2,6 +2,8 @@ package com.tax.app;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,9 @@ import org.json.simple.JSONObject;
  * Servlet implementation class DataHandler
  */
 public class DataHandler extends HttpServlet {
+	private static int id =1;
+	private static List<TaxPayer> taxPayerList = new ArrayList<TaxPayer>();
+	private static TaxPayers taxPayers = new TaxPayers();
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -22,7 +27,7 @@ public class DataHandler extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -39,13 +44,16 @@ public class DataHandler extends HttpServlet {
 			JSONObject jsonData = converter.requestToJson(request);
 			
 			// jsonToClass converts JSON object TO TaxPayers OBJECT
-			TaxPayers TaxPayersObj = (TaxPayers) converter.jsonToClass(jsonData);
+			TaxPayer taxPayerObj = (TaxPayer) converter.jsonToClass(jsonData,id);
+			taxPayerList.add(id-1, taxPayerObj);
+			taxPayers.setTaxPayer(taxPayerList);
 			
 			// GET PATH OF DATA.XML
 			String path = getServletContext().getRealPath("/data.xml");
 			
 			// CONVERT AND STORE XML IN DATA.XML ONTO PATH
-			replyMsg = converter.classToXml(path, TaxPayersObj);
+			replyMsg = converter.classToXml(path, taxPayers);
+			id++;  // id increment for XML TaxPayer Added
 			
 			
 		} catch (Exception e) {
